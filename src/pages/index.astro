@@ -1,11 +1,37 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import NavBar from '../components/NavBar.astro';
+import Record from '../components/Record.astro';
+const response = await fetch("https://api.studio.thegraph.com/query/55572/akasha/version/latest", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            query: `
+            query GetAllRecords {
+                recordAddeds {
+                    id
+                    _from
+                    _title
+                    _description
+                    _timestamp
+                }
+            }
+            `,
+        })
+});
+const data = await response.json();
+const records = data.data.recordAddeds;
 ---
 
 <Layout title="Akasha">
 	<NavBar active="/" />
-	<main>
-		
+	<main class="p-16 flex flex-wrap justify-start items-center">
+		{records.map((record) => {
+			return (
+				<Record title={record._title} content={record._description} />
+			)
+		})}
 	</main>
 </Layout>
