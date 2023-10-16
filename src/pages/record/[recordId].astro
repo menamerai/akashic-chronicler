@@ -1,7 +1,8 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import NavBar from "../../components/NavBar.astro";
-import Card from "../../components/Card.astro";
+import AccordionGroup from "../../layouts/AccordionGroup.astro";
+import Accordion from "../../components/Accordion.astro";
 const param = Astro.params;
 
 const response = await fetch("https://api.studio.thegraph.com/query/55572/akasha/version/latest", {
@@ -28,11 +29,13 @@ const flashcards = data.data.flashcardAddeds;
 
 <Layout title="Akasha">
 	<NavBar active="/" />
-	<main class="p-16 flex flex-wrap justify-start items-center">
-		{flashcards.map((flashcard) => {
-			return (
-				<Card title={flashcard._question} content={flashcard._answer} id={flashcard.id} />
-			)
-		})}
+	<main class="p-16 flex flex-wrap justify-center items-center">
+		<AccordionGroup>
+			{flashcards.map((flashcard) => {
+				return (
+					<Accordion question={flashcard._question} answer={flashcard._answer} author={flashcard._from} />
+				)
+			})}
+		</AccordionGroup>
 	</main>
 </Layout>
