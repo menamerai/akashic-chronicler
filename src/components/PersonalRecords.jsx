@@ -20,7 +20,7 @@ export default function PersonalRecords() {
                     _recordId
                     _title
                     _description
-                    _timestamp
+                    _from
                 }
             }
             `,
@@ -44,7 +44,7 @@ export default function PersonalRecords() {
 
     if (!records) {
         return (
-            <div className="container flex justify-center items-center">
+            <div className="w-full h-[70vh] flex justify-center items-center">
                 <div class="animate-spin inline-block w-6 h-6 border-[3px] border-current border-t-transparent text-green-600 rounded-full" role="status" aria-label="loading">
                     <span class="sr-only">Loading...</span>
                 </div>
@@ -57,7 +57,7 @@ export default function PersonalRecords() {
             {records.map((record) => {
                 console.log(record);
                 return (
-                    <Card title={record._title} content={record._description} id={record._recordId} routePrefix="record/" />
+                    <Card title={record._title} content={record._description} id={record._from} routePrefix={`record/${record._recordId}/`} />
                 )
             })}
         </div>
