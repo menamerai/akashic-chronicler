@@ -30,7 +30,7 @@ const records = data.data.recordAddeds;
 	<main class="p-16 flex flex-wrap justify-start items-center">
 		{records.map((record) => {
 			return (
-				<Card title={record._title} content={record._description} id={record._recordId} />
+				<Card title={record._title} content={record._description} id={record._recordId} routePrefix="record/" />
 			)
 		})}
 	</main>
