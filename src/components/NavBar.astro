@@ -10,10 +10,12 @@ const navItems = {
 }
 
 const { active } = Astro.props;
+
+import ThirdwebWrapper from './ThirdwebWrapper';
 ---
 
 <header class="flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full bg-white text-sm py-4 dark:bg-gray-800 border-b-2">
-    <nav class="max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between" aria-label="Global">
+    <nav class="max-w-[85rem] w-full lg:h-16 mx-auto px-4 sm:flex sm:items-center sm:justify-between" aria-label="Global">
       <div class="flex items-center justify-between">
         <a class="flex-none text-xl font-semibold dark:text-white hover:text-green-500 transition-colors" href="/">Akasha</a>
         <div class="sm:hidden">
@@ -39,6 +41,7 @@ const { active } = Astro.props;
                 )
             })
           }
+          <ThirdwebWrapper client:only="react" />
         </div>
       </div>
   </nav>

@@ -1,11 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import NavBar from '../components/NavBar.astro';
+import PersonalRecords from '../components/PersonalRecords';
 ---
 
 <Layout title="Akasha">
 	<NavBar active="/personal" />
-	<main>
-		
+	<main class="p-16 flex flex-wrap justify-start items-center">
+        <PersonalRecords client:only="react" />
 	</main>
 </Layout>

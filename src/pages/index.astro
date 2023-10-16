@@ -1,9 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import NavBar from '../components/NavBar.astro';
-import Card from '../components/Card.astro';
-import Accordion from '../components/Accordion.astro';
-import AccordionGroup from '../layouts/AccordionGroup.astro';
+import Card from '../components/Card.jsx';
 const response = await fetch("https://api.studio.thegraph.com/query/55572/akasha/version/latest", {
         method: "POST",
         headers: {
