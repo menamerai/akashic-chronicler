@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import NavBar from '../components/NavBar.astro';
-import Record from '../components/Record.astro';
+import Card from '../components/Card.astro';
 const response = await fetch("https://api.studio.thegraph.com/query/55572/akasha/version/latest", {
         method: "POST",
         headers: {
@@ -12,7 +12,7 @@ const response = await fetch("https://api.studio.thegraph.com/query/55572/akasha
             query GetAllRecords {
                 recordAddeds {
                     id
-                    _from
+                    _recordId
                     _title
                     _description
                     _timestamp
@@ -30,7 +30,7 @@ const records = data.data.recordAddeds;
 	<main class="p-16 flex flex-wrap justify-start items-center">
 		{records.map((record) => {
 			return (
-				<Record title={record._title} content={record._description} />
+				<Card title={record._title} content={record._description} id={record._recordId} />
 			)
 		})}
 	</main>
